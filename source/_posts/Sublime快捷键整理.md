@@ -1,5 +1,8 @@
 ---
 title: Sublime text 3 常用快捷键
+date: 2016-04-03 17:00:00
+categories: [IDE]
+tags: Sublime
 ---
 
 ## 备注

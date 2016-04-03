@@ -1,5 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags: node
+categories: 
+tags: 
+keywords: 
 ---

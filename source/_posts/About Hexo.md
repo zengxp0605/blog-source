@@ -1,5 +1,8 @@
 ---
 title: About Hexo 
+date: 2016-04-03 15:58:38
+categories: [部署]
+tags: [nodejs,hexo]
 ---
 
 # 利用node 的hexo 框架在github上搭建博客  
