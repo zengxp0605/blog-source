@@ -21,5 +21,23 @@ keywords:
 ```
      nslookup google.com.hk 8.8.8.8 //查询 google.com.hk 的ip,( 8.8.8.8 是DNS 服务器)
 
-
 ```
+
+  Usage
+  -----
+  
+  ### Key Bindings
+  
+  The default key bindings:
+  
+  **Windows, Linux:**
+  
+  * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>O</kbd>: Preview Markup in Browser.
+  * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>X</kbd>: Export Markup as HTML.
+  * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>: Copy Markup as HTML.
+  
+  **OSX:**
+  
+  * <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>O</kbd>: Preview Markup in Browser.
+  * <kbd>⌘</kbd>+<kbd>⌥</kbd>+<kbd>X</kbd>: Export Markup as HTML.
+  * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd>: Copy Markup as HTML.

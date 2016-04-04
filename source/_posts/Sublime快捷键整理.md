@@ -2,11 +2,11 @@
 title: Sublime text 3 常用快捷键
 date: 2016-04-02 17:00:00
 categories: [IDE]
-tags: Sublime
+tags: sublime
 ---
 
 ## 备注
-- 粗体表示经常忘记的
+> 粗体表示经常忘记的
 
 1. 快速查找,Goto Anything功能 （Ctrl + P）
   - 输入 @ + 函数名 可以快速找到函数。(相当于 ctrl+r)
@@ -86,6 +86,4 @@ tags: Sublime
 	- Ctrl+KL 改为小写 
 29. Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。
 30. -
-31. -
-32. -
-33. 
+
