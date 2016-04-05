@@ -97,7 +97,7 @@ tags: sublime
   - ctrl+tab 栈中下一视图（打开顺序）
   - ctrl+shift+tab   栈中前一视图
 
-2. ***Alt+Shift+1~9（非小键盘）屏幕显示相等数字的小窗口 (未实验)***
+2. ** Alt+Shift+1~9（非小键盘）屏幕显示相等数字的小窗口 **
 
 3. 重新打开关闭的标签 (Shift + Ctrl + T)
   - 在Chrome里面，如果你不小心关闭了某个标签页并想恢复它，你可以按下Shift + Ctrl + T重新打开它。

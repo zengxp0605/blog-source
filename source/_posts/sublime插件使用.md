@@ -7,9 +7,17 @@ tags: [sublime]
 keywords:
 ---
 
+#### 前言
+1. 安装Package Control
+
+2. Ctrl + Shift + P 打开 package contrl 面板
+  - install 安装插件,完整命令[Package Control: Install Package]
+  - remove 移除插件,完整命令[Package Control: Remove Package]
+
+
 ### 1. OmniMarkupPreviewer
 
->实时在浏览器中预览markdown 格式文件
+> 实时在浏览器中预览markdown 格式文件
 
 **Key Bindings**
   
