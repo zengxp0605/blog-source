@@ -14,14 +14,30 @@ keywords:
 
     tasklist | findstr "7612" // 查看pid=7612 的进程名称
 
-    taskkill /im node.exe /f  // 强制停止 node.exe 进程
+    taskkill /im /f node.exe   // 强制停止 node.exe 进程
 ```
 
 ## 一些常用命令
 ```
      nslookup google.com.hk 8.8.8.8 //查询 google.com.hk 的ip,( 8.8.8.8 是DNS 服务器)
 
+     // 列出文件目录树形结构
+     tree 
+     tree /f
+     // 导出到文件
+     tree /f > d:/tree.txt
+
 ```
+
+
+
+
+
+
+
+
+
+
 
   Usage
   -----
