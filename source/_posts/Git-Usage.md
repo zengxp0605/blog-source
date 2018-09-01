@@ -21,6 +21,8 @@ tags: Git
 
 # 设置全局的忽略文件
   git config --global core.excludesfile ~/.gitignore_global
+# 设置windows 下使用LF 换行(避免"warning:LF will be replacee by CRLF" 的提示)
+git config --global core.autocrlf false
 ```
 
 3. 基本操作命令

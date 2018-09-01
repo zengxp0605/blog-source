@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta content="always" name="referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史朝代</title>
+    <script type="text/javascript" src="http://public.dabiaoge.me/common/js/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+            font-size: 14px;
+        }
+
+        #resbox {
+            position: relative;
+            top: 20px;
+        }
+
+        #items {
+            position: relative;
+            line-height: 2em;
+        }
+
+        #items>.item {
+            position: absolute;
+            height: 2em;
+            text-align: center;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        #items>.item::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 102%;
+        }
+
+        #items>.itemtip {
+            position: absolute;
+            text-align: center;
+            border: .3px solid #000;
+            border-radius: 50%;
+        }
+
+        #timeline {
+            position: relative;
+            border-bottom: 1px solid #000;
+            height: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        #timeline>div {
+            position: absolute;
+            border-left: 1px solid #000;
+            bottom: 0;
+            height: 8px;
+        }
+
+        #timeline>div.hasDesp {
+            height: 12px;
+        }
+
+        #timeline>div>div {
+            height: 1.5em;
+            position: relative;
+            top: -1.4em;
+            left: -50%;
+        }
+    </style>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            font-size: 14px;
+        }
+
+        #resbox {
+            position: relative;
+            top: 20px;
+        }
+
+        #items {
+            position: relative;
+            line-height: 2em;
+        }
+
+        #items>.item {
+            position: absolute;
+            height: 2em;
+            text-align: center;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        #items>.item::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            height: 102%;
+        }
+
+        #items>.itemtip {
+            position: absolute;
+            text-align: center;
+            border: .3px solid #000;
+            border-radius: 50%;
+        }
+
+        #timeline {
+            position: relative;
+            border-bottom: 1px solid #000;
+            height: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        #timeline>div {
+            position: absolute;
+            border-left: 1px solid #000;
+            bottom: 0;
+            height: 8px;
+        }
+
+        #timeline>div.hasDesp {
+            height: 12px;
+        }
+
+        #timeline>div>div {
+            height: 1.5em;
+            position: relative;
+            top: -1.4em;
+            left: -50%;
+        }
+    </style>
+    <div id="resbox">
+        <div id="timeline"></div>
+        <div id="items">
+            <div class="item" iname="夏" fyear="-2146" tyear="-1675" linepos="1"></div>
+            <div class="item" iname="商" fyear="-1675" tyear="-1029" linepos="1"></div>
+            <div class="item" iname="西周" fyear="-1029" tyear="-771" linepos="1"></div>
+            <div class="item" iname="东周" fyear="-770" tyear="-256" linepos="1"></div>
+            <div class="item" iname="秦" fyear="-221" tyear="-207" linepos="1"></div>
+            <div class="item" iname="西汉" fyear="-206" tyear="25" linepos="1"></div>
+            <div class="item" iname="东汉" fyear="25" tyear="220" linepos="1"></div>
+            <div class="item" iname="魏" fyear="220" tyear="265" linepos="1"></div>
+            <div class="item" iname="蜀" fyear="221" tyear="263" linepos="2"></div>
+            <div class="item" iname="吴" fyear="222" tyear="280" linepos="3"></div>
+            <div class="item" iname="西晋" fyear="265" tyear="317" linepos="1"></div>
+            <div class="item" iname="东晋" fyear="317" tyear="420" linepos="1"></div>
+            <div class="item" iname="十六国" fyear="304" tyear="439" linepos="2" title='这时期，在我国北方，先后存在过一些封建政权，其中有：汉(前赵)、成(成汉)、前凉、后赵(魏)、前燕、前秦、后燕、后秦、西秦、后凉、南凉、北凉、南燕、西凉、北燕、夏等国，历史上叫做"十六国"。'></div>
+            <div class="item" iname="宋" fyear="420" tyear="479" linepos="1" title="南朝-宋"></div>
+            <div class="item" iname="齐" fyear="479" tyear="502" linepos="1" title="南朝-齐"></div>
+            <div class="item" iname="梁" fyear="502" tyear="557" linepos="1" title="南朝-梁"></div>
+            <div class="item" iname="陈" fyear="557" tyear="589" linepos="1" title="南朝-陈"></div>
+            <div class="item" iname="北魏" fyear="386" tyear="534" linepos="3" title="北朝-北魏"></div>
+            <div class="item" iname="东魏" fyear="534" tyear="550" linepos="3" title="北朝-东魏"></div>
+            <div class="item" iname="北齐" fyear="550" tyear="577" linepos="3" title="北朝-北齐"></div>
+            <div class="item" iname="西魏" fyear="535" tyear="557" linepos="2" title="北朝-西魏"></div>
+            <div class="item" iname="北周" fyear="557" tyear="581" linepos="2" title="北朝-北周"></div>
+            <div class="item" iname="隋" fyear="581" tyear="618" linepos="2"></div>
+            <div class="item" iname="唐" fyear="618" tyear="907" linepos="1"></div>
+            <div class="item" iname="五代" fyear="907" tyear="960" linepos="1" title="五代十国时期，中原地区依次更替的5个朝代。后梁(907-923),后唐(923-936),后晋(936-946),后汉(947-950),后周(951-960)。只能说是藩镇型的朝廷，且没有成为所有藩镇认可的共主，主要势力范围也不出华北地区"></div>
+            <div class="item" iname="十国" fyear="902" tyear="979" linepos="2" title='五代十国时期，除中原外出现过的10个主要政权。吴、前蜀、吴越、楚、闽、南汉、荆南(南平)、后蜀、南唐、北汉等国，历史上叫做"十国"。'></div>
+            <div class="item" iname="北宋" fyear="960" tyear="1127" linepos="1"></div>
+            <div class="item" iname="南宋" fyear="1127" tyear="1279" linepos="1"></div>
+            <div class="item" iname="辽" fyear="907" tyear="1125" linepos="3"></div>
+            <div class="item" iname="西夏" fyear="1038" tyear="1227" linepos="2"></div>
+            <div class="item" iname="金" fyear="1115" tyear="1234" linepos="4"></div>
+            <div class="item" iname="元" fyear="1206" tyear="1368" linepos="3"></div>
+            <div class="item" iname="明" fyear="1368" tyear="1644" linepos="2"></div>
+            <div class="item" iname="清" fyear="1616" tyear="1911" linepos="1"></div>
+            <div class="item" iname="民国" fyear="1912" tyear="1949" linepos="1"></div>
+            <div class="item" iname="中华人民共和国" fyear="1949" tyear="今" linepos="1"></div>
+
+            <div class="itemtip" iname="春秋" fyear="-770" tyear="-476" linepos="2"></div>
+            <div class="itemtip" iname="战国" fyear="-475" tyear="-221" linepos="2"></div>
+            <div class="itemtip" iname="三国" fyear="220" tyear="280" linepos="4"></div>
+            <div class="itemtip" iname="南北朝" fyear="420" tyear="589" linepos="4"></div>
+            <div class="itemtip" iname="五代十国" fyear="907" tyear="979" linepos="4" title='五代十国时期，我国历史上唐灭到宋初之间的一段大分裂时期，是对五代和十国的合称。'></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 参考资料 https://tool.lu/dynasty/
+        $(function () {
+            var ppy = 1.85; // pixel per year
+            var startYear = -2200; // year start from -2200;
+            var yearPoints = {};
+            var years = [];
+            var oe = 0;
+
+            function setItem(syear, je, istip) {
+                var data = {
+                    name: je.attr("iname"),
+                    fyear: parseInt(je.attr("fyear")),
+                    tyear: je.attr("tyear"),
+                    linepos: parseInt(je.attr("linepos")),
+                };
+                var isnow = false;
+                if (data.tyear === "今") {
+                    isnow = true, d = new Date(), data.tyear = d.getFullYear();
+                } else {
+                    data.tyear = parseInt(data.tyear);
+                }
+                add_year_point(data.fyear, data.name + " 开始");
+                add_year_point(data.tyear, data.name + (isnow ? " 继续" : " 结束"));
+                je.html(data.name).css({
+                    top: ((data.linepos - 1) * 2) + "em",
+                    left: (data.fyear - syear) * ppy + "px",
+                    width: (data.tyear - data.fyear) * ppy + "px",
+                });
+                if (!istip) {
+                    je.css("background", randColor());
+                }
+                if (!je.attr("title")) {
+                    je.attr("title", data.name);
+                }
+            }
+
+            function randColor() {
+                var cs = '6789ABCD', res = '#';
+                for (var i = 0; i < 6; i++) {
+                    res += cs.charAt(Math.floor(Math.random() * cs.length));
+                }
+                return res;
+            }
+
+            function add_year_point(year, thing) {
+                if (yearPoints[year]) {
+                    yearPoints[year].push(thing);
+                } else {
+                    yearPoints[year] = [thing];
+                    years.push(year);
+                }
+            }
+
+            function showTimeLine() {
+                var last = -9999, tempThings = [], year, things;
+                years = years.sort(function (a, b) {
+                    return a - b;
+                });
+                var y1 = startYear, y2 = years[years.length - 1];
+                $("#timeline").css("width", ((y2 - y1) * ppy + 100) + "px");
+                for (var j = 0; j < years.length; j++) {
+                    year = years[j];
+                    things = yearPoints[year];
+                    if (year - last > 20) {
+                        if (tempThings.length) {
+                            addTimePoint(last, tempThings);
+                            tempThings = [];
+                        }
+                        last = year;
+                        tempThings.push(year + "：");
+                        for (var i = 0; i < things.length; i++) {
+                            tempThings.push(things[i]);
+                        }
+                    } else {
+                        tempThings.push(year + "：");
+                        for (var i = 0; i < yearPoints[year].length; i++) {
+                            tempThings.push(yearPoints[year][i]);
+                        }
+                        addTimePoint(year, null, true);
+                    }
+                }
+                if (tempThings.length) {
+                    addTimePoint(last, tempThings);
+                }
+            }
+
+            function addTimePoint(year, things, lineOnly) {
+                var tt, je;
+                if (lineOnly) {
+                    je = $('<div></div>');
+                } else {
+                    tt = things.join('\n');
+                    je = $('<div class="hasDesp"><div title="' + tt + '">' + year + '</div></div>');
+                }
+                je.css('left', (year - startYear) * ppy + "px");
+                $("#timeline").append(je);
+            }
+
+            $("#items > .item").each(function () {
+                setItem(startYear, $(this));
+            });
+            $("#items > .itemtip").each(function () {
+                setItem(startYear, $(this), true);
+            });
+            add_year_point(-841, "之前年份都是大约, 公元前841年(西周共和元年)为中国历史确切纪年的开始");
+            showTimeLine();
+        });
+    </script>
+</body>
+
+</html>
