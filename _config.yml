@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zengxp0605.github.io
+url: http://jasonzeng.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -74,7 +74,7 @@ deploy:
   branch: master
 
 ## User
-duoshuo_shortname: zengxp0605
+#duoshuo_shortname: zengxp0605
 #avatar : /assets/images/avatar.jpg
 archive: 1
 category: 1

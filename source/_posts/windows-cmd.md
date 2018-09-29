@@ -15,6 +15,8 @@ keywords:
     tasklist | findstr "7612" // 查看pid=7612 的进程名称
 
     taskkill /im /f node.exe   // 强制停止 node.exe 进程
+    taskkill /pid 2472 -t -f  // 通过进程号强制停止 pid=7612 的进程
+
 ```
 
 ## 一些常用命令
@@ -29,8 +31,10 @@ keywords:
 
 ```
 
-
-
+## win10 开启 administrator 账号登录
+```
+net user administrator /active:yes
+```
 
 
 
