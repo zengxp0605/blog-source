@@ -2,9 +2,6 @@
 title: sublime插件使用
 comments: true
 date: 2016-4-4 11:11:37
-categories: [IDE]
-tags: [sublime2]
-keywords:
 ---
 
 #### 前言
