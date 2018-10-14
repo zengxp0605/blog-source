@@ -44,7 +44,10 @@ public interface IPhone {
 
 
 ### 里氏替换原则
+<<<<<<< HEAD
 > LSP: Liskov Substitution Principle
+=======
+>>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
 > Functions that use pointers or references to base classes must be able to use objects of dervied classes without knowing it.
 > 所有引入基类的地方必须能透明地使用其子类对象
 
@@ -56,6 +59,7 @@ public interface IPhone {
 
 
 ### 依赖倒置原则
+<<<<<<< HEAD
 > DIP: Dependence Inversion Principle
 > High level modules should not depend upon low level modules. Both should depend upon abstractions. Abstractions should not depend upono details. Details should depend upon abstractions.
 
@@ -108,10 +112,17 @@ public interface IPhone {
 
 - 开闭原则是最基础的一个原则,前5个原则都是开闭原则的具体形态,也就是说前5个原则就是知道设计的工具和方法,而开闭原则才是其精神领袖
 
+=======
+
+### 接口隔离原则
+
+### 开闭原则
+>>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
 
 
 <!--more-->
 
+<<<<<<< HEAD
 # 设计模式
 
 ## 单例模式
@@ -159,3 +170,5 @@ public interface IPhone {
 ## 享元模式
 
 ## 桥梁模式
+=======
+>>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
