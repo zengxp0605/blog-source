@@ -44,10 +44,7 @@ public interface IPhone {
 
 
 ### 里氏替换原则
-<<<<<<< HEAD
 > LSP: Liskov Substitution Principle
-=======
->>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
 > Functions that use pointers or references to base classes must be able to use objects of dervied classes without knowing it.
 > 所有引入基类的地方必须能透明地使用其子类对象
 
@@ -59,7 +56,6 @@ public interface IPhone {
 
 
 ### 依赖倒置原则
-<<<<<<< HEAD
 > DIP: Dependence Inversion Principle
 > High level modules should not depend upon low level modules. Both should depend upon abstractions. Abstractions should not depend upono details. Details should depend upon abstractions.
 
@@ -112,32 +108,34 @@ public interface IPhone {
 
 - 开闭原则是最基础的一个原则,前5个原则都是开闭原则的具体形态,也就是说前5个原则就是知道设计的工具和方法,而开闭原则才是其精神领袖
 
-=======
-
-### 接口隔离原则
-
-### 开闭原则
->>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
 
 
 <!--more-->
 
-<<<<<<< HEAD
 # 设计模式
 
 ## 单例模式
+详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/1_singleton>
 
 ## 工厂方法模式
+- TODO: 不是很理解使用
 
 ## 抽象工厂模式
+- TODO: 
 
 ## 模板方法模式
+详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/4_template_method>
 
 ## 建造者模式
+详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/5_builder>
 
 ## 代理模式
+详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/6_proxy>
 
 ## 原型模式
+> Prototpe Pattern  
+> Specify the kinds fo objects to create using a prototypical instance, and create new objects by copying this prototype. (用原型实例指定创建对象的种类,并且通过拷贝这些原型创建新的对象.)
+- Java中通过实现 `Cloneable` 接口来实现
 
 ## 中介者模式
 
@@ -170,5 +168,3 @@ public interface IPhone {
 ## 享元模式
 
 ## 桥梁模式
-=======
->>>>>>> 562a86f7f8cd20ecd34f89dd10562d535e8eefee
