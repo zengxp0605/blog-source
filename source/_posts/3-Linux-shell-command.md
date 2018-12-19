@@ -155,3 +155,13 @@ zcat modules.tar.gz
 ```
 git diff –name-only origin/master | xargs tar zvcf myProjectDemo.tar.gz
 ```
+
+7. lsof -i tcp  # 查看tcp连接情况
+
+8. 跟踪进程中的系统调用 `strace`
+# 参数
+-p pid
+跟踪指定的进程pid.
+-s strsize
+指定输出的字符串的最大长度.默认为32.文件名一直全部输出.
+

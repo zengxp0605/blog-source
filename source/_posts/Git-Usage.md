@@ -114,3 +114,13 @@ git config --global core.autocrlf false
 `git fetch origin -p`
 - 最后拉取代码
 `git pull`
+
+3. 拉取代码时冲突,以他人的为准解决
+```
+# 先还原失败的 git pull
+git reset --hard HEAD
+# 获取更新
+get fetch
+# 强制使用他人版本合并
+git merge origin/feature/alpha -X thiers
+```
