@@ -104,6 +104,10 @@ top -n 3600 -d 1 | grep node | awk -F ' ' '{print $10}' >> tmp.log
 awk 'BEGIN{total=0;count=0;}{if($0 != ""){total=total+$0; count++}}END{printf "total: %s,count: %s,argv: %s",total,count,total/count}' tmp.log
 ```
 
+- 结合`sort`, `uniq` 获取唯一的id
+```
+cat syslog-2019-02-26.log | grep 系统异常 |  awk -F "{" '{print $4}' | awk -F ':' '{print $2}' | awk -F ',' '{print $1}' | sort | uniq | wc -l
+```
 
 ## 参考
 - [Shell脚本之awk详解](http://blog.51cto.com/tanxin/1222140)
