@@ -159,9 +159,27 @@ git diff –name-only origin/master | xargs tar zvcf myProjectDemo.tar.gz
 7. lsof -i tcp  # 查看tcp连接情况
 
 8. 跟踪进程中的系统调用 `strace`
+```
 # 参数
 -p pid
 跟踪指定的进程pid.
 -s strsize
 指定输出的字符串的最大长度.默认为32.文件名一直全部输出.
+```
 
+9. grep
+```
+[root@www ~]# grep [-acinv] [--color=auto] '搜寻字符串' filename
+选项与参数：
+-a ：将 binary 文件以 text 文件的方式搜寻数据
+-c ：计算找到 '搜寻字符串' 的次数
+-i ：忽略大小写的不同，所以大小写视为相同
+-n ：顺便输出行号
+-v ：反向选择，亦即显示出没有 '搜寻字符串' 内容的那一行！
+--color=auto ：可以将找到的关键词部分加上颜色的显示喔！
+```
+
+- 例子
+```
+zcat file.log | grep 'undefined' | grep -Ev "(扣减|room)" | head -100
+```
