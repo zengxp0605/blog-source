@@ -124,3 +124,13 @@ get fetch
 # 强制使用他人版本合并
 git merge origin/feature/alpha -X thiers
 ```
+
+4. 认证失败,不提示输入密码
+```
+git config --system --unset credential.helper
+git config --local --unset credential.helper
+
+# 全局的,可以不执行
+git config --global --unset credential.helper
+```
+
