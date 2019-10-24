@@ -173,6 +173,49 @@ RestController注解是@Controller和@ResponseBody的合集,表示这是个控�
 8. java技术栈
 ![java职业路线](/assets/images/tech/java职业路线.jpg "java职业路线")
 
+9. 打包方式
+- `war`包适用用web站点,如使用jsp页面
+   - war包放入到`tomcat`的`webapps`目录下,启动tomcat即可
+- `jar`包适用于Restful api提供服务,不支持静态资源
+```shell
+java -jar demo.jar
+# war包同样可以当做jar包来执行
+java -jar demo.war
+```
+
+- springboot中 `pom.xml`配置不同的打包方式
+```xml
+    <!--  打包方式  -->
+    <packaging>war</packaging>
+<!-- <packaging>jar</packaging>-->
+```
+war包注意点: 启动main的类需要做一些修改 
+```java
+@SpringBootApplication
+@MapperScan("com.jason.mybatisxml.mapper")
+public class MybatisXmlApplication extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MybatisXmlApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(MybatisXmlApplication.class);
+    }
+}
+```
+
+10. tomcat 配置
+conf/server.xml
+```xml
+<Host name="localhost"  appBase="webapps"
+        unpackWARs="true" autoDeploy="true">
+        <!-- 自定义的配置, 去除url中的 /demo/xxx -->
+        <Context path="/" docBase="demo" debug="0" privileged="true" reloadable="true"/>
+</Host>
+```
+
 ## 一些配置
 
 - application.properties
@@ -181,6 +224,9 @@ RestController注解是@Controller和@ResponseBody的合集,表示这是个控�
 spring.datasource.username=root
 spring.datasource.password=123456
 spring.datasource.url=jdbc:mysql://localhost:3306/springdb?serverTimezone=GMT
+
+# 打印mybatis sql 语句
+logging.level.com.jason.mybatis.mapper=debug
 
 # JPA 相关配置
 # 自动创建hibernate_sequence表
