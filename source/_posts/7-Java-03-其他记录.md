@@ -30,10 +30,13 @@ xml配置,在xml映射器中配置useGeneratedKeys参数
 # 下一步计划
 - dubbo -- [ok]
 - druid
-- zookeeper -- [ok]
+- zookeeper 
+  - <https://mp.weixin.qq.com/s/Myp7aqwnhGB419e0Gu10bQ>
+  - 待实现
 - RabbitMQ -- [ok]
 - Docker
 - AOP(面向切面编程) `@Aspect`
+- Spring 源码阅读,IOC容器
 
 # 待阅读
 - [基于Netty自己动手实现RPC框架](https://zhuanlan.zhihu.com/p/35720383)
