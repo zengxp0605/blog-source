@@ -35,7 +35,7 @@ tags: [Java]
     - `iotecg`
         - 通过`@Service(version = "1.0.0", group = "iotecg")` 注解实现服务
 
-## TODO: 跨子应用调用, group 方式以实现
+## 跨子应用调用, group 方式以实现
     - provider 在`application.yml` 中使用 `registry.group=iotecg`的方式配置子应用时,未能生效
     - provider 使用 `@Service(version="1.0.0", group="iotecg")` 的方式则可以
     - consumer 可以使用 `@Reference(version="1.0.0", group="iotecg")` 注解来实现
@@ -77,6 +77,10 @@ public JSONObject handleData(HandleDataModel hdm) {
 ```java
 genericService.$invoke(methodName, invokeParamTyeps, invokeParams);
 ```  
+
+## TODO: 真正的泛化调用
+- 在comsumer 中没有提前加载需要使用的接口, 动态加载
+
 
 ## code @<https://github.com/zengxp0605/spring-dubbo-demo.git>
 

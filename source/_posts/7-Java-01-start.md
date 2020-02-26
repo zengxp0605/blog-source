@@ -206,6 +206,39 @@ public class MybatisXmlApplication extends SpringBootServletInitializer {
 }
 ```
 
+- **打包包含所有依赖的jar包，可以直接使用 `java -jar xxx.jar`执行**
+> 打出两个包 `test-import-jar-1.0.0.jar` 和 `test-import-jar-1.0.0-jar-with-dependencies.jar`
+```
+<plugins>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>2.5.5</version>
+    <configuration>
+        <archive>
+            <manifest>
+                <!-- 指定main方法 -->
+                <mainClass>com.stan.test.HelloWorld</mainClass>
+            </manifest>
+        </archive>
+        <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+    </configuration>
+    <executions>
+        <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+                <goal>single</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
+
+
+
 10. tomcat 配置
 conf/server.xml
 ```xml

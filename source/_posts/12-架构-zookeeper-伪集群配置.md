@@ -116,3 +116,12 @@ dubbo:
     protocol: zookeeper
 ```
 
+## zookeeper 图形化的客户端工具：ZooInspector
+- ZooInspector下载地址: <https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip>
+- 解压，进入目录 `ZooInspector\build`
+- 运行或mac下双击zookeeper-dev-ZooInspector.jar
+```
+java -jar zookeeper-dev-ZooInspector.jar //执行成功后，会弹出java ui client
+```
+- 点击左上角连接按钮，输入Zookeeper服务地址：ip:2181
+- 点击OK，就可以查看Zookeeper节点信息啦
