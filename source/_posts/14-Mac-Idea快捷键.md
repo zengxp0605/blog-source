@@ -57,3 +57,5 @@ tags: [Mac]
 | 快捷键  | 中文描述  | 英文描述 |
 | ------ | --------- | ------- |
 | ctrl+H | 查看类 | Hierarchy |
+| ctrl+G | 添加下个相同项 | Add Selection for next Occurrence |
+| ctrl+cmd+G | 选中所有相同 | Select All Occurrence |

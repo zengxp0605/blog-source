@@ -1,7 +1,7 @@
 ---
 title: Java 学习记录-3
 comments: true
-date: 2019-09-02 10:57
+date: 2019-11-02 10:57
 categories: [Java]
 tags: [Java]
 ---
@@ -61,6 +61,63 @@ xml配置,在xml映射器中配置useGeneratedKeys参数
 - [推荐收藏系列：一文理解JVM虚拟机（内存、垃圾回收、性能优化）解决面试中遇到问题](https://juejin.im/post/5d200b54f265da1bac40384a)
 
 
+## JMM (Java Memory Model) java内存模型
+- Java内存模型的承诺
+  - 原子性
+    - 原子性指的是一个操作是不可中断的，即使是在多线程环境下，一个操作一旦开始就不会被其他线程影响
+    - JVM自身提供的对基本数据类型读写操作的原子性外，对于方法级别或者代码块级别的原子性操作，可以使用synchronized关键字或者重入锁(ReentrantLock)保证程序执行的原子性
+  - 可见性
+    - 可见性指的是当一个线程修改了某个共享变量的值，其他线程是否能够马上得知这个修改的值
+  - 有序性
+    - 对于指令重排导致的可见性问题和有序性问题，则可以利用volatile关键字解决，因为volatile的另外一个作用就是禁止重排序优化
+- volatile关键字有如下两个作用
+  - 保证被volatile修饰的共享变量对所有线程总数可见的，也就是当一个线程修改了一个被volatile修饰共享变量的值，新值总数可以被其他线程立即得知。
+  - 禁止指令重排序优化。
+
+- 参考: [Java并发编程：volatile关键字解析](https://www.cnblogs.com/dolphin0520/p/3920373.html)
+
+## windows/mac 下调试java性能分析
+>  jvisualvm可视化工具的使用(需要使用管理员权限运行 jdk/bin/jvisualvm.exe) <https://www.cnblogs.com/baihuitestsoftware/articles/6477680.html>
+
+- `jvisualvm` GC插件查看新老生代内存情况
+- 使用`jvisualvm`工具获取到java进程pid
+- `jstack pid`
+
+
+## java多线程
+- Thread.yield()方法
+```
+# jdk注释
+A hint to the scheduler that the current thread is willing to yield its current use of a processor. The scheduler is free to ignore this hint.
+
+翻译: 向调度程序提示当前线程愿意放弃当前使用的处理器。 调度程序可以随意忽略此提示
+```
+
+- yield 和 sleep 的异同
+  1）yield, sleep 都能暂停当前线程，sleep 可以指定具体休眠的时间，而 yield 则依赖 CPU 的时间片划分。
+  2）yield, sleep 两个在暂停过程中，如已经持有锁，则都不会释放锁资源。
+  3）yield 不能被中断，而 sleep 则可以接受中断。
+
+- yield 方法可以很好的控制多线程，如执行某项复杂的任务时，如果担心占用资源过多，可以在完成某个重要的工作后使用 yield 方法让掉当前 CPU 的调度权，等下次获取到再继续执行，这样不但能完成自己的重要工作，也能给其他线程一些运行的机会，避免一个线程长时间占有 CPU 资源。
+
+
+## 序列化 `Serilizable` `Externalizable`
+java 的`transient`关键字为我们提供了便利，你只需要实现Serilizable接口，将不需要序列化的属性前添加关键字transient，序列化对象的时候，这个属性就不会序列化到指定的目的地中。
+
+
+## Reflect
+自java8开始，可以直接通过反射得到方法的参数名。取代了之前如arg0、arg1 等无含义的参数名称。不过这样有个条件：你必须手动在编译时开启-parameters 参数，否则还是获取不到。
+```java
+ Method method = clazz.getMethod("method1", String.class, String.class);
+  //得到该方法参数信息数组
+  Parameter[] parameters = method.getParameters();
+  //遍历参数数组，依次输出参数名和参数类型
+  Arrays.stream(parameters).forEach(p->{
+      System.out.println(p.getName()+" : "+p.getType());
+  });
+```
+
+
 # 下一步计划
 - dubbo -- [ok]
   - rpc实现原理, 源码阅读
@@ -95,12 +152,4 @@ xml配置,在xml映射器中配置useGeneratedKeys参数
 
 - 待学习的项目
   - [基于springboot+dubbo+mybatis的分布式敏捷开发框架](https://github.com/G-little/priest)
-
-
-
-
-
-
-
-
 

@@ -58,6 +58,7 @@ server {
 ```
 
 ### shell中使用命令
+- 注意使用单引号
 ```bash
 N=`awk -F ':' '/proxy_pass/{print $3}' /usr/local/nginx/conf/vhosts/host.conf | awk -F ';' '{print $1}' | sort -r | head -n1`
 echo $N
@@ -131,3 +132,4 @@ $ awk '$0~/ls/ {print}' filename   或者  awk '/ls/ {print}' filename
 
 
 > 参考: [http://man.linuxde.net/awk](http://man.linuxde.net/awk)
+> [http://www.gnu.org/software/gawk/manual/gawk.html](http://www.gnu.org/software/gawk/manual/gawk.html)
