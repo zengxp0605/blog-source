@@ -60,6 +60,30 @@ xml配置,在xml映射器中配置useGeneratedKeys参数
 ## JVM 相关
 - [推荐收藏系列：一文理解JVM虚拟机（内存、垃圾回收、性能优化）解决面试中遇到问题](https://juejin.im/post/5d200b54f265da1bac40384a)
 
+- JVM跨平台实现
+> 一次编译，到处执行
+  - 通过`javac.exe`编译器编译`.java`文件得到的`.class`文件是不能直接运行的，这些文件需要交给JVM来解析运行
+  - JVM是运行在操作系统之上的，每个操作系统的指令是不同的，而JDK是区分操作系统的，安装的JDK是和当前系统兼容的
+  - 而class字节码运行在JVM之上，所以不用关心class字节码是在哪个操作系统编译的，只要符合JVM规范，那么，这个字节码文件就是可运行的
+
+- `class`文件和JVM
+  - Java类的加载是动态的，它并不会一次性将所有类全部加载后再运行，而是保证程序运行的基础类(像是基类)完全加载到jvm中，至于其他类，则在需要的时候才加载。这当然就是为了节省内存开销
+  - class文件是通过类的加载器装载到jvm中的
+  - Java默认的类加载器： 
+    - Bootstrap ClassLoader：负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类
+    - Extension ClassLoader：负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包
+    - App ClassLoader：负责加载classpath中指定的jar包及目录中class
+  - 双亲委派模型
+    - 简单来说：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上
+    - 好处： 防止内存中出现多份同样的字节码(安全性角度)
+    - 类加载器在成功加载某个类之后，会把得到的 java.lang.Class类的实例缓存起来。下次再请求加载该类的时候，类加载器会直接使用缓存的类的实例，而不会尝试再次加载
+  - 类加载的详细过程
+    - 加载，查找并加载类的二进制数据，在Java堆中也创建一个java.lang.Class类的对象
+    - 连接，连接又包含三块内容：验证、准备、解析
+    - 初始化，为类的静态变量赋予正确的初始值
+    - 使用，new出对象程序中使用
+    - 卸载，执行垃圾回收  
+
 
 ## JMM (Java Memory Model) java内存模型
 - Java内存模型的承诺
@@ -73,6 +97,7 @@ xml配置,在xml映射器中配置useGeneratedKeys参数
 - volatile关键字有如下两个作用
   - 保证被volatile修饰的共享变量对所有线程总数可见的，也就是当一个线程修改了一个被volatile修饰共享变量的值，新值总数可以被其他线程立即得知。
   - 禁止指令重排序优化。
+  - 并不能保证原子性
 
 - 参考: [Java并发编程：volatile关键字解析](https://www.cnblogs.com/dolphin0520/p/3920373.html)
 

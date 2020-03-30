@@ -5,29 +5,29 @@ categories: [Git]
 tags: Git
 ---
 
-### git 小技巧 
+### git 小技巧
 
-#### git 打包发布zip包
+#### git 打包发布 zip 包
+
 ```
 # git 归档方式，但会包含文件夹下现有文件
-git archive -o 123.zip HEAD $(git diff --name-only <历史版本sha1 号>^) 
+git archive -o 123.zip HEAD $(git diff --name-only <历史版本sha1 号>^)
 # 使用管道方式打zip 包
 git diff <新版本号-sha1> <历史版本号-sha1> --name-only | xargs zip update.zip
 # 使用管道方式打zip 包，不指定版本号，而是直接打当前分支和其他分支的差异文件包(比如：比较远端的master和本分支的差异文件打包上线）
 git diff origin/master --name-only | xargs zip package.zip
 ```
 
-
-
 #### 修改最近一次提交说明
 
 ```
-git commit –amend
+git commit –-amend
 ```
 
-#### 不产生无用的merge的同步
+#### 不产生无用的 merge 的同步
 
 使用 git 自身功能来回滚代码，取消上一次的修改应该用，但要注意，虽然代码是实现了回滚，同时也会自动产生一条“回滚代码”的 log 。
+
 ```
 git pull --rebase origin master
 ```
@@ -35,18 +35,21 @@ git pull --rebase origin master
 #### 回滚已上传的更新
 
 ```
+# 撤销最近一次推送 --no-edit表示不编辑commit
+git revert HEAD --no-edit
+# 撤销推送，并且将修改保留到本地，不提交
+git revert HEAD  --no-commit
+
 git revert <sha1_of_commit>
 ```
 
-
-#### 回滚master步骤 
+#### 回滚 master 步骤
 
 ```
 git reset --hard HEAD~1
 git reset --hard HEAD <需要回滚到的位置>
 git push origin master  --force<强制回滚>
 ```
-
 
 #### git 维护
 
@@ -64,32 +67,31 @@ git prune
 
 # 建议的命令
 git fsck && git gc --prune
- 
+
 # 或者可以尝试
 git reflog expire --expire=now --all && git gc --aggressive --prune=now
 ```
 
-
-#### 格式化log 显示样式
+#### 格式化 log 显示样式
 
 ```
-# 先设置一个 config 
+# 先设置一个 config
 git config --global alias.lg "log --color --graph --codetty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
- 
+
 # 使用设置好的别名
 git lg
 ```
 
 #### 其他
 
-* 如果想直接使用 git pull 拉去默认分支,可以在 .git/config 加上
+- 如果想直接使用 git pull 拉去默认分支,可以在 .git/config 加上
+
 ```
 [branch "master"]
   remote = origin
   merge = refs/heads/master
   rebase = true
 ```
-
 
 #### git 设置全局忽略
 
@@ -102,11 +104,9 @@ git config --global core.excludesfile ~/.gitignore_global
 > ~/.gitignore_global
 ```
 
+---
 
-
-------------------------------------------------------------
 ### git 命令行
-
 
 #### add 命令
 
@@ -147,8 +147,6 @@ git checkout HEAD^ # 回滚内容到上一个版本，效果同 git reset
 git checkout -b <本地新分支名> <远端名称>/<远程分支名>
 ```
 
-
-
 #### config 命令
 
 ```
@@ -156,7 +154,7 @@ git config --global user.name "yourname"
 git config --global user.email your@exam.com
 ```
 
-#### clone 命令 
+#### clone 命令
 
 ```
 #仅获取最新版和一个历史版本,即最后2个版本
@@ -167,7 +165,7 @@ git rev-list master
 git rev-list master --max-count=10
 ```
 
-#### commit 命令 
+#### commit 命令
 
 ```
 # 使用最近commit增补提交，不产生新的commit log
@@ -185,7 +183,7 @@ git fetch
 git fetch --depth=<版本数量>
 ```
 
-####  log 命令 
+#### log 命令
 
 ```
 # 精简查看历史提交记录
@@ -199,22 +197,26 @@ git show 7957045706302a92453fecb22806072872bb4f97
 ```
 
 #### diff 命令
+
 ```
 #查看未提交文件的修改
 git diff FILENAME
 ```
 
-
 #### stash 命令
-> 参考:  [http://www.williamsang.com/archives/2347.html?utm_source=tuicool&utm_medium=referral](http://www.williamsang.com/archives/2347.html?utm_source=tuicool&utm_medium=referral)  
-> 这个命令保存add的新文件,或者的文件到缓存区,  commit 后的内容不会保存
+
+> 参考: [http://www.williamsang.com/archives/2347.html?utm_source=tuicool&utm_medium=referral](http://www.williamsang.com/archives/2347.html?utm_source=tuicool&utm_medium=referral)  
+> 这个命令保存 add 的新文件,或者的文件到缓存区, commit 后的内容不会保存
+
 ```
 # 将当前修改存入缓存区(不会被提交)
-git stash 
+git stash
 # 查看缓存区列表
 git stash list
 
 # 恢复暂存区和工作区进度
+git stash pop
+git stash pop 1
 git stash pop --index stash@{0}
 
 # 其他
@@ -232,36 +234,48 @@ git stash branch <branchname> <stash> 基于进度创建分支
 $ git merge --abort
 ```
 
-#### push 命令 
+#### push 命令
 
 ```
 # 提交本地test分支作为远程的master分支
 git push origin test:master
- 
+
 # 提交本地test分支作为远程的test分支
 git push origin test:test
- 
+
 # 如果想删除远程的分支呢？类似于上面，如果:左边的分支为空，那么将删除:右边的远程的分支。
 # 刚提交到远程的test将被删除，但是本地还会保存的，不用担心。
-$ git push origin :test  --force<此参数表示强制push 可能会对冲掉新的push 结果>    
+$ git push origin :test  --force<此参数表示强制push 可能会对冲掉新的push 结果>
 ```
 
-
-#### svn 命令 
+#### svn 命令
 
 ```
 # 关联svn
 git svn init <url> --no-metadata --no-minimize-url -T <主干名，一般为trunk>
 ```
 
-#### reset 命令 
+#### reset 命令
+
+- 撤销 commit(未 push 的情况下)
+
+```
+# ~1 表示回去几次提交
+# --soft 不删除工作空间改动代码，撤销commit，不撤销git add .
+git reset --soft HEAD~1
+
+# --mixed 不删除工作空间改动代码，撤销commit，并且撤销git add . 操作 (不加 --mixed也可，默认值)
+git reset --mixed HEAD^
+
+# --hard 删除工作空间改动代码，撤销commit，撤销git add .
+git reset --hard HEAD^
+```
 
 ```
 # 将版本库恢复到HEAD之前的版本
 * git reset --hard HEAD~1
 * git reset --hard HEAD <版本号>
 ```
-
 
 #### remote
 
@@ -284,41 +298,39 @@ git push [remoteName] [localBranchName]
 git remote prune [origin]
 ```
 
-
-#### tags 命令 
+#### tags 命令
 
 ```
-# 查看本地tags 
+# 查看本地tags
 git tag -l
- 
-# push到服务器端 
-git push --tags 
- 
-# 删除本地tag 
+
+# push到服务器端
+git push --tags
+
+# 删除本地tag
 git tag -d v1.1
- 
+
 # 补打标签
 git tag -a v0.1.1 [版本号]
 ```
 
-#### files 命令 
+#### files 命令
 
 ```
 # 恢复多个删除的本地文件
 git ls-files -d | xargs -i git checkout {}
 ```
 
-
-#### git 保存http下的用户名密码
+#### git 保存 http 下的用户名密码
 
 ```
-git config --global credential.helper store 
+git config --global credential.helper store
 ```
-
 
 ### gitconfig 配置
 
 <file txt .gitconfig>
+
 ```
 [user]
     name = Jason
@@ -369,20 +381,20 @@ git config --global credential.helper store
     window = 0
     packSizeLimit = 100m
 ```
+
 </file>
 
+### Sourcetree 常用工具和配置方式
 
-### Sourcetree常用工具和配置方式
+BeyondCompare 定义为默认工具
 
-BeyondCompare定义为默认工具
+- 点击 工具->选项
+- 在弹出框选择 比较
+- 外部对比工具 选择 Beyond Compare
+- 合并工具 选择 Beyond Compare
+- 找到本机 git 配置文件 .gitconfig
+- 添加如下配置
 
-  - 点击 工具->选项
-  - 在弹出框选择 比较 
-  - 外部对比工具 选择Beyond Compare 
-  - 合并工具 选择Beyond Compare
-  - 找到本机git配置文件 .gitconfig
-  - 添加如下配置
-  
 ```
 [difftool "sourcetree"]
 cmd = '/d/Tools/BeyondCompare/BComp.exe' \"$LOCAL\" \"$REMOTE\"
@@ -391,7 +403,6 @@ cmd = '/d/Tools/BeyondCompare/BComp.exe' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MER
 trustExitCode = true
 ```
 
-> 提醒：把 d:/ 改成 Bash 下的 /d/ 
+> 提醒：把 d:/ 改成 Bash 下的 /d/
 
-
-### 详见 [https://github.com/git-tips/tips](https://github.com/git-tips/tips) 
+### 详见 [https://github.com/git-tips/tips](https://github.com/git-tips/tips)
