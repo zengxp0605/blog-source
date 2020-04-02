@@ -48,6 +48,29 @@ tags: [Java]
 - 一般对**热点代码**做编译
 
 
+## JMM (Java Memory Model) java内存模型
+- Java内存模型的承诺
+  - 原子性
+    - 原子性指的是一个操作是不可中断的，即使是在多线程环境下，一个操作一旦开始就不会被其他线程影响
+    - JVM自身提供的对基本数据类型读写操作的原子性外，对于方法级别或者代码块级别的原子性操作，可以使用synchronized关键字或者重入锁(ReentrantLock)保证程序执行的原子性
+  - 可见性
+    - 可见性指的是当一个线程修改了某个共享变量的值，其他线程是否能够马上得知这个修改的值
+  - 有序性
+    - 对于指令重排导致的可见性问题和有序性问题，则可以利用volatile关键字解决，因为volatile的另外一个作用就是禁止重排序优化
+- volatile关键字有如下两个作用
+  - 保证被volatile修饰的共享变量对所有线程总数可见的，也就是当一个线程修改了一个被volatile修饰共享变量的值，新值总数可以被其他线程立即得知。
+  - 禁止指令重排序优化。
+  - 并不能保证原子性
+
+- 参考: [Java并发编程：volatile关键字解析](https://www.cnblogs.com/dolphin0520/p/3920373.html)
+
+## windows/mac 下调试java性能分析
+>  jvisualvm可视化工具的使用(需要使用管理员权限运行 jdk/bin/jvisualvm.exe) <https://www.cnblogs.com/baihuitestsoftware/articles/6477680.html>
+
+- `jvisualvm` GC插件查看新老生代内存情况
+- 使用`jvisualvm`工具获取到java进程pid
+- `jstack pid`
+
 
 ## 拿些常见的JVM面试题来做做，加深一下理解和查缺补漏：
 

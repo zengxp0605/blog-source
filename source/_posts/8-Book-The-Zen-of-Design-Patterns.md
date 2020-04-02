@@ -130,7 +130,24 @@ public interface IPhone {
 详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/5_builder>
 
 ## 代理模式
-详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/6_proxy>
+详见:  
+- <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/6_proxy>
+- <https://github.com/zengxp0605/java-design-patterns/tree/master/01-proxy>
+
+代理模式小结
+- 代理模式角色分为 3 种：
+    - Subject（抽象主题角色）：定义代理类和真实主题的公共对外方法，也是代理类代理真实主题的方法；
+    - RealSubject（真实主题角色）：真正实现业务逻辑的类；
+    - Proxy（代理主题角色）：用来代理和封装真实主题；
+
+- 特点
+    - 两个对象，被代理人和代理人
+    - 被代理人的事情必须要做，但是自己不想做，或者做得不专业，需要代理人来做
+    - 代理人可以拿到被代理人的个人资料 
+
+- 关注过程，不关心结果 
+- 动态代理底层： **字节码重组**       
+
 
 ## 原型模式
 > Prototpe Pattern  
