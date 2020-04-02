@@ -42,6 +42,7 @@ public interface IPhone {
 
 - 接口一定要符合单一职责原则, 而类往往是违背的, **对于单一职责原则,我的建议是接口一定要做到单一职责, 类的设计尽量做到只有一个原因引起变化**
 
+<!-- more -->
 
 ### 里氏替换原则
 > LSP: Liskov Substitution Principle
