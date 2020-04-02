@@ -28,7 +28,7 @@ tags: [Java]
 > Netty三大优点：并发高，传输快，封装好
 Netty和Tomcat最大的区别就在于通信协议，Tomcat是基于Http协议的，他的实质是一个基于http协议的web容器，但是Netty不一样，他能通过编程自定义各种协议，因为netty能够通过codec自己来编码/解码字节流，完成类似redis访问的功能，这就是netty和tomcat最大的不同。 
 
-
+<!-- more -->
 ## Spring 相关
 - IOC控制反转(依赖注入AI)
   - 解释: 以前对象是有程序本身来创建,使用spring后,程序变为被动接收spring创建好的对象

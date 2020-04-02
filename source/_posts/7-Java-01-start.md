@@ -34,7 +34,7 @@ POJO（Plain Ordinary Java Object / Pure Old Java Object）简单的Java对象�
 > (https://blog.csdn.net/qq_27886997/article/details/82799217)
 
 
-
+<!-- more -->
 4. 空指针异常（NPE : NullPointerException)
 
 5. 常用目录名称

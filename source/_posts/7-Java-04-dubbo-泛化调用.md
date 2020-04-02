@@ -22,6 +22,7 @@ tags: [Java]
         - `/gen-api/iotecg.test2` 会调用 `iotecg` 下的 `SyncDataHandleService.test2` 方法 
         - `/gen-api/iotbmp.test` 会调用 `iotbmp` 下的 `SyncDataHandleService.test` 方法
 
+<!-- more -->
 ## `gateway`
     - 模拟网关应用, 负责其他 dubbo 服务的统一调用
    

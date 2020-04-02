@@ -1,7 +1,7 @@
 ---
 title: Docker安装开发环境-[redis,zookeeeper等]
 comments: true
-date: 2020-03-30 17:36
+date: 2020-03-31 17:36
 categories: [Docker]
 tags: [Docker]
 ---
@@ -30,6 +30,7 @@ redis \
 /usr/local/bin/redis-server /usr/local/etc/redis/redis.conf --appendonly yes
 ```
 
+<!-- more -->
 ## 安装tomcat
 ```sh
 docker pull tomcat
