@@ -4,8 +4,8 @@
 
 # Site
 title: Jason Zeng
-subtitle: Jason's personal blog
-description: tech blog
+subtitle: Jason's Blog
+description: Jason's personal blog
 author: Jason Zeng
 # language: zh-CN
 language: en
@@ -90,7 +90,6 @@ deploy:
   branch: master
 
 ## User
-#duoshuo_shortname: zengxp0605
 #avatar : /assets/images/avatar.jpg
 archive: 1
 category: 1

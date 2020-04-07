@@ -19,7 +19,7 @@ tags: [Java]
 - 一些分析命令
 ```sh
 > ps -aux | grep 'java'
-> jps # 查看启动的java进程pid
+> jps -l # 查看启动的java进程pid
 > jcmd -l # 查看启动的java进程pid
 > jcmd 26313 VM.flags # 查看进程启动参数
 > jstack 25943 
@@ -31,6 +31,13 @@ tags: [Java]
 ```
 
 ## GC
+
+### 哪些内存需要GC
+- JVM中，程序计数器、虚拟机栈、本地方法栈都是随线程而生随线程而灭，栈帧随着方法的进入和退出做入栈和出栈操作，实现了自动的内存清理,无需GC
+    它们在编译期便知道内存占用大小，内存的分配和回收都具有确定性
+- JVM中线程共享的Heap 区、Method Area,这部分内存是运行期间动态创建的，内存的分配和回收具有不确定性，是GC重点关注的
+
+
 ### GC的分类
 - Minor GC(Young GC): 发生在新生代的垃圾收集工作。新生代几乎是所有对象出生的地方（当然存在例外，如果对象内存分配的时候发现新生代空间不够的时候会将对象直接分配在老年区）
 - Full GC(Major GC): 发生在老年代的垃圾收集动作。没有Minor GC那么频繁。且耗时比Minor GC要久的多。
@@ -182,5 +189,6 @@ CMS的全称：Concurrent Mark and Sweep，官方给予的名称是：“Mostly 
 
 
 ## 参考
+- [Jvm 系列(四):Jvm 调优-命令篇](http://www.ityouknow.com/jvm/2017/09/03/jvm-command.html)
 - 官方文档： <https://docs.oracle.com/javase/8/docs/technotes/tools/unix/>
 - <https://www.cnblogs.com/zhangxiaoguang/p/5792468.html>

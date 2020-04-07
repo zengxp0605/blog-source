@@ -136,7 +136,6 @@ public interface IPhone {
 
 
 
-
 # 设计模式
 
 分类  
@@ -149,6 +148,7 @@ public interface IPhone {
 详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/02-singleton>
 
 Spring中，通过@Autowired注入的依赖，默认是单例模式的
+写法和使用场景参考: [设计模式学习笔记（8）单例](https://b.letec.top/106.html)
 
 ## 工厂模式
 详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/03-factory>
