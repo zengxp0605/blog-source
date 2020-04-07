@@ -1,5 +1,5 @@
 ---
-title: Docker安装开发环境-[redis,zookeeeper等]
+title: Docker安装开发环境-redis,zookeeeper等
 comments: true
 date: 2020-03-31 17:36
 categories: [Docker]

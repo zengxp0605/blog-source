@@ -12,9 +12,9 @@
 -XX:-OmitStackTraceInFastThrow
  -XX:+PrintGCDateStamps 
  -verbose:gc -XX:+PrintGCDetails 
- -Xloggc:/home/admin/service_gc_20200331173337.log 
+ -Xloggc:/home/admin/service_gc.log 
  -XX:+HeapDumpOnOutOfMemoryError 
- -XX:HeapDumpPath=/home/admin/service_heap_dump_20200331173337.hprof 
+ -XX:HeapDumpPath=/home/admin/service_heap_dump.hprof 
 -Djava.ext.dirs=/usr/local/jdk8/jre/lib/ext:./ext:./external -jar test.jar
 
 

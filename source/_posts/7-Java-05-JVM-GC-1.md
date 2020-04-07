@@ -156,9 +156,6 @@ CMS的全称：Concurrent Mark and Sweep，官方给予的名称是：“Mostly 
 ```
 
 
-
-
-
 ### GC调优的目的可以总结为下面两点：
 - 减少对象晋升到老年代的数量
 - 减少FullGC的执行时间
