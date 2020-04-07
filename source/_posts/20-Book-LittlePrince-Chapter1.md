@@ -16,6 +16,7 @@ In the book it said: "Boa constrictors swallow their prey whole, without [chewin
 I [pondered](#ponder) deeply, then, over the adventures of the jungle. And after some work with a colored pencil I succeeded in making my first drawing. My Drawing Number One. It looked like this: 
 <!-- <p style="TEXT-INDENT: 0px; TEXT-ALIGN: center"><img src="/d/images/xiaowangzi/285507432035.jpg" alt="小王子的第一号作品">     -->
 
+<!-- more -->
 I showed my [masterpiece](#masterpiece) to the grown-ups, and asked them whether the drawing [frightened](#frighten) them.    
 But they answered: "Frighten? Why should any one be frightened by a hat?"    
 My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. But since the grown-ups were not able to understand it, I made another drawing: I drew the inside of the boa constrictor, so that the grown-ups could see it clearly. They always need to have things explained. My Drawing Number Two looked like this:   

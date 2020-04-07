@@ -1,5 +1,5 @@
 ---
-title: JVM简单理解-1
+title: JVM简单理解（1）
 comments: true
 date: 2020-03-24 10:57
 categories: [Java]
@@ -65,55 +65,6 @@ tags: [Java]
   - 并不能保证原子性
 
 - 参考: [Java并发编程：volatile关键字解析](https://www.cnblogs.com/dolphin0520/p/3920373.html)
-
-## windows/mac 下调试java性能分析
->  jvisualvm可视化工具的使用(需要使用管理员权限运行 jdk/bin/jvisualvm.exe) <https://www.cnblogs.com/baihuitestsoftware/articles/6477680.html>
-
-- `jvisualvm` GC插件查看新老生代内存情况
-- 使用`jvisualvm`工具获取到java进程pid
-- `jstack pid`
-
-- `jstat -gcutil {pid} 1200` 查看gc回收情况 
-
-
-## GC
-### GC的分类
-- Minor GC(Young GC): 发生在新生代的垃圾收集工作。新生代几乎是所有对象出生的地方（当然存在例外，如果对象内存分配的时候发现新生代空间不够的时候会将对象直接分配在老年区）
-- Full GC(Major GC): 发生在老年代的垃圾收集动作。没有Minor GC那么频繁。且耗时比Minor GC要久的多。
-
-### 两种GC的触发条件
-- Minor GC：
-新生代GC的触发情况很简单，就是当在新生代Eden或者某个Survivor区创建对象内存不够的时候，就会尝试Minor GC。
-- Full GC:
-  - old空间不足：如果Eden区不足以分配足够的内存给即将创建的大对象，那么大对象会在Old区创建。此时如果Old区内存也不足，那么就会触发Full GC
-  - Young区晋升到Old区的空间不足：在进行Young GC之前，会判断这次Young GC是否安全，这里所谓的安全是当前老年代的剩余空间可以容纳之前 Young GC晋升对象的平均大小，或者可以容纳Young的全部对象，如果结果是不安全的，就不会执行这次 Young GC，转而执行一次Full GC
-  - PermGen Space（全称是Permanent Generation space,是指内存的永久保存区域）空间不足
-  - 执行 System.gc()、jmap -histo:live 、jmap -dump
-  - Young GC出现Promotion Faliure：当对象的GC年龄达到阈值时，或者To区放不下时，会把该对象复制到 Old区，如果Old区空间不足时，会发生Promotion Faliure，并接下去触发Full GC
-
-
-### GC调优的目的可以总结为下面两点：
-- 减少对象晋升到老年代的数量
-- 减少FullGC的执行时间
-如果通过减少老年代的大小来降低Full GC的执行时间，可能会引发OutOfMemoryError或者导致Full GC的频率升高。
-如果是通过增加老年代的大小来降低Full GC的频率，执行时间将会增加  
-> 如何达到一个平衡？
-
-### 优化参考数值
-- Minor GC执行非常迅速（50ms以内）
-- Minor GC没有频繁执行（大约10s执行一次）
-- Full GC执行非常迅速（1s以内）
-- Full GC没有频繁执行（大约10min执行一次）
-
-### GC调优实例参考
-- GC时间过长：<https://segmentfault.com/a/1190000005174819>
-```
-# 添加下面两个参数强制在remark阶段和FULL GC阶段之前先在进行一次年轻代的GC，这样需要进行处理的内存量就不会太多。
--XX:+ScavengeBeforeFullGC 
--XX:+CMSScavengeBeforeRemark
-```
-
-- [OOM](https://mp.weixin.qq.com/s?__biz=MzAwNTQ4MTQ4NQ==&mid=2453559994&idx=1&sn=4859ab4b755890515921e9d5bbeca597&scene=21#wechat_redirect)
 
 
 ## 拿些常见的JVM面试题来做做，加深一下理解和查缺补漏：

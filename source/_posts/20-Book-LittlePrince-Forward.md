@@ -16,6 +16,8 @@ I ask the [indulgence](#indulgence) of the children who may read this book for [
 To Leon Werth    
 when he was a little boy     
 
+<!-- more -->
+
 
 
 ### 单词

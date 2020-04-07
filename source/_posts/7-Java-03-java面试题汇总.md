@@ -1,5 +1,5 @@
 ---
-title: Java 面试题
+title: Java 面试题汇总
 comments: true
 date: 2019-09-02 10:57
 categories: [Java]
@@ -14,13 +14,14 @@ JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac
 
 2. == 和 equals 的区别是什么？
 对于基本类型和引用类型 == 的作用效果是不同的，如下所示：
-
 基本类型：比较的是值是否相同；
 引用类型：比较的是引用是否相同；
 
-总结 ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
+总结：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
 
 3. 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？
+不一定。同时反过来equals为true，hashCode也不一定相同。
+类的hashCode方法和equals方法都可以重写，返回的值完全在于自己定义。
 
 4. final 在 java 中有什么作用？
 - final 修饰的类叫最终类，该类不能被继承。

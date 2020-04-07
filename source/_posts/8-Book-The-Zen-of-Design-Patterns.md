@@ -75,6 +75,13 @@ public interface IPhone {
 
 - 依赖倒置原则是6个设计原则中最难以实现的原则, 它是实现开闭原则的重要途径,依赖倒置没有实现,就别想实现对扩展开发,对修改关闭. 在项目中只要记住"面向接口编程"就基本上抓住了依赖倒置原则的核心.
 
+网上的一些理解：
+1. 把原本的高层建筑依赖底层建筑倒置过来，变成底层建筑依赖高层建筑。 高层建筑需要什么，底层去实现这样的需求，但是高层并不管底层是怎么是怎么实现的。
+如原来，汽车依赖车身，车身依赖底盘，底盘依赖轮胎  
+倒置之后，轮胎依赖底盘，底盘依赖车身，车身依赖汽车
+2. 依赖倒置原则的具体的实现，可以体现在spring的IOC(Inversion of Control 控制反转)，使用依赖注入(DI)来实现
+
+
 ### 接口隔离原则
 > ISP: Interface Segregation Principle
 > Clients should not be forced to depend upon interfaces that they don't use.(客户端不应该依赖它不需要的接口)
@@ -87,7 +94,7 @@ public interface IPhone {
   - 接口设计是有限度的
 
 
-### 迪米特法则
+### 迪米特法则（最少知识原则）
 > LoD: Law of Demeter
 > LKP: Least Knowledge Principle
 > 一个对象应该对其他对象有最少的了解
@@ -113,16 +120,50 @@ public interface IPhone {
 
 <!--more-->
 
+## 其他设计原则
+- 组合 / 聚合复用原则（Composition/Aggregation Reuse Principle - CARP）
+当要扩展类的功能时，优先考虑使用组合，而不是继承。这条原则在 23 种经典设计模式中频繁使用，如：代理模式、装饰模式、适配器模式等
+
+- 无环依赖原则（Acyclic Dependencies Principle - ADP）
+当 A 模块依赖于 B 模块，B 模块依赖于 C 模块，C 依赖于 A 模块，此时将出现循环依赖。在设计中应该避免这个问题，可通过引入 “中介者模式” 解决该问题； 
+中心化，网状结构-->星型结构
+
+- 保持它简单与傻瓜（Keep it simple and stupid - KISS）
+不要让系统变得复杂，界面简洁，功能实用，操作方便，要让它足够的简单，足够的傻瓜。
+
+- 高内聚与低耦合（High Cohesion and Low Coupling - HCLC）
+模块内部需要做到内聚度高，模块之间需要做到耦合度低。
+
+
+
+
 # 设计模式
 
+分类  
+创建型：单例，工厂，建造者，原型  
+行为性：策略，模版，中介者，观察者，责任链，命令，解释器，迭代器，备忘录，状态，空对象，访问者  
+结构型：代理，外观，组合，装饰器，适配器，桥接，过滤器，享元  
+
+
 ## 单例模式
-详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/1_singleton>
+详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/02-singleton>
 
-## 工厂方法模式
-- TODO: 不是很理解使用
+Spring中，通过@Autowired注入的依赖，默认是单例模式的
 
-## 抽象工厂模式
-- TODO: 
+## 工厂模式
+详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/03-factory>
+
+- 简单工厂模式
+提供一个统一的工厂类，根据传入的参数不同返回不同的实例，被创建的实例具有共同的父类或接口
+适用于需要创建的对象较少
+
+- 工厂方法模式
+工厂方法模式是简单工厂的仅一步深化， 在工厂方法模式中，我们不再提供一个统一的工厂类来创建所有的对象，而是针对不同的对象提供不同的工厂。也就是说每个对象都有一个与之对应的工厂
+
+- 抽象工厂模式
+看起来代码变多来，实际是解藕，代码方便维护
+结合策略模式修改 AbstractFactory 类，代码更优雅
+
 
 ## 模板方法模式
 详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/4_template_method>

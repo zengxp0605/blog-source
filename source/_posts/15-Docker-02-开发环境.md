@@ -37,6 +37,7 @@ docker pull tomcat
 
 # 运行，宿主机使用80端口
 docker run --name tomcat -itd \
+--cap-add=SYS_PTRACE \
 -v /opt/docker/tomcat/webapps:/usr/local/tomcat/webapps \
 -v /opt/docker/tomcat/log:/usr/local/tomcat/logs \
 -v /opt/docker/tomcat/work:/usr/local/tomcat/work \
@@ -44,8 +45,13 @@ docker run --name tomcat -itd \
 -p 80:8080 \
 tomcat
 
-
 # 接下来在本地的 /opt/docker/tomcat/webapps 目录可以放war包
-- springboot war包？
+```
+
+参数说明：
+```
+--cap-add=SYS_PTRACE # Docker 自 1.10 版本开始，默认的 seccomp 配置文件中禁用了 ptrace，容器中无法使用jmap等命令
+# 会报错如下：
+Error attaching to process: sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process: ptrace(PTRACE_ATTACH, ..) failed for 123: Operation not permitted
 ```
 

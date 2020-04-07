@@ -20,6 +20,7 @@ tags: vscode
   typings install dt~react --global
   typings install dt~react-native --global
 ```
+<!-- more -->
 
 3. 项目目录下新建 `jsconfig.json` 文件, 内容如下[此文件内容为空也可以??]
 ```json

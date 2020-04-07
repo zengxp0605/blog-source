@@ -21,6 +21,8 @@ keywords: zookeeper
 - cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo2
 - cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo3
 
+<!-- more -->
+
 3. 修改配置
 - cp zoo1/conf/zoo_sample.cfg zoo1/conf/zoo.cfg
 - 编辑`zoo1/conf/zoo.cfg`

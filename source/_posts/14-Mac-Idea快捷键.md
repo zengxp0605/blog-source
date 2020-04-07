@@ -17,6 +17,8 @@ tags: [Mac]
 | cmd+alt+←	| 跳转上一次浏览的位置	| back | 
 | cmd+alt+→	| 撤销跳转上一次浏览的位置	| forward | 
 
+<!-- more -->
+
 ### 重构
 - 快速重构 Extract
 | 快捷键  | 中文描述  | 英文描述 |

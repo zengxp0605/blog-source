@@ -31,6 +31,7 @@ git commit –-amend
 ```
 git pull --rebase origin master
 ```
+<!-- more -->
 
 #### 回滚已上传的更新
 

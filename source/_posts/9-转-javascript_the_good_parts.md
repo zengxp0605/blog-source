@@ -18,6 +18,7 @@ JavaScript语言精粹
 
 [JavaScript：世界上最被误解的语言](http://javascript.crockford.com/javascript.html)
 
+<!-- more -->
 ### 第1章 精华
 * 为什么要使用JavaScript语言
 

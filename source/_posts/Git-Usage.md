@@ -25,6 +25,8 @@ tags: Git
 git config --global core.autocrlf false
 ```
 
+<!-- more -->
+
 3. 基本操作命令
 ```
   - git clone https://github.com/zengxp0605/test.git jason/test // 克隆一个远程的仓库到本地jason/test目录

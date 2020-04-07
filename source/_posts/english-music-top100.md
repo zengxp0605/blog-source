@@ -29,6 +29,8 @@ keywords:
 
 10. let it be--beatles 昔日创下了榜史纪录,也是Beatles解散时成员们的心态写照。有时候生命的意义在于过程,至于结果就让它Let it be...
 
+<!-- more -->
+
 11. it's my life--bon jovi 曾用来做CS的MTV背景音乐。
 
 12. that's why(you go away)--meachael learns to rock 半路在一家美发店的门前听到了that's why (you go away)的钢琴版!!! 感觉很好,这样听起来That's why就更经典了! (放的声音越大越有感觉哦)

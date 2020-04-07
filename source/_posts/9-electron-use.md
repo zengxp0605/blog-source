@@ -14,6 +14,8 @@ npm install --g electron-prebuilt
 
 ```
 
+<!-- more -->
+
 ##### 安装的时候需要翻墙, 如果修改部分源代码
 
 - 这里说一下修改源
