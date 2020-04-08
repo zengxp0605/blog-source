@@ -205,6 +205,26 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 ## 装饰模式
 
 ## 策略模式
+> Define a family of algorithms, encapsulate each one, and make them interchangeable. [The] Strategy [pattern] lets the algorithm vary independently from clients that use it.
+详见:  
+- <https://github.com/zengxp0605/java-design-patterns/tree/master/04-strategy-base>
+- springboot注解实现策略模式 @Autowired： <https://github.com/zengxp0605/spring-boot-mydemo/tree/master/13-springboot-strategy>
+
+角色：
+- Strategy: 策略接口或者策略抽象类，并且策略执行的接口
+- ConcreteStrategyA，ConcreteStrategyB等：实现策略接口的具体策略类
+- Context：上下文类，持有具体策略类的实例，并负责调用相关的算法
+
+特点：
+- 一组算法
+- 客户端自由切换
+
+优点：
+- 策略模式提供了对“开闭原则”的完美支持，用户可以在不修改原有系统的基础上选择算法（策略），并且可以灵活地增加新的算法（策略）
+
+缺点：
+- 客户端必须知道所有的策略类，并自行决定使用哪一个策略类
+
 
 ## 适配器模式
 
@@ -227,3 +247,35 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 ## 享元模式
 
 ## 桥梁模式
+
+
+---------
+# 23种之外的设计模式
+
+## 委派模式
+![委派模式类图](/assets/images/tech/委派模式类图.png "委派模式类图")
+特征：
+- 相当于静态代理一种非常特殊的情况，全权代理
+- 项目经理分配任务，需要选择一个员工去执行，像策略模式
+- 干活是我的，功劳是你的
+- spring中以 Delegate, Dispatcher开头/结尾的类，一般是委托模式，如`DispatcherServlet`
+
+**代理模式和策略模式的综合体？？**
+
+
+
+-----------
+# 疑惑？？？
+
+使用各种设计模式，感觉很多都有关联性
+
+比如：
+策略模式中的Context 似乎也符合组合模式？
+
+委派模式也可理解为策略模式？ 委派给不同的对象执行，换个说法也就是使用不同的策略去执行；
+如项目经理委派任务给员工A或者员工B， 那么也可以理解为项目经理使用了“员工A”策略，或者使用了“员工B”策略
+
+委派模式跟代理模式（静态代理）也很相似？ 假如代理模式中的代理在 invoke 前后不做操作，那么跟委托模式描述是一样的？
+
+
+> 委托模式是一项基本技巧，许多其他的模式，如状态模式、策略模式、访问者模式本质上是在更特殊的场合采用了委托模式
