@@ -8,7 +8,7 @@ tags: Git
 > 以Github为例,介绍windows下 Git常用命令的使用
 
 1. 配置 SSH KEYS  (使用 ssh 协议的路径时需要, 使用http/https 无需配置)
-   - 在 Git Bash中执行:  ` ssh-keygen -t rsa -C "youremail" `   
+   - 在 Git Bash中执行:  ` ssh-keygen -t rsa -b 4096 -C "youremail" `   
    - 此时会在当前用户根目录下生成.ssh文件夹,里面有两个文件：id_rsa , id_rsa.pub  
    - 复制 ~/.ssh/id_rsa.pub 内容, 登陆github账户->Settings->SSH Keys-> add , 粘贴,保存
 
@@ -136,3 +136,10 @@ git config --local --unset credential.helper
 git config --global --unset credential.helper
 ```
 
+5. git merge时报错: `fatal: refusing to merge unrelated histories`
+```
+git merge master --allow-unrelated-histories
+
+# git pull 时报错则使用：
+git pull origin master --allow-unrelated-histories
+```

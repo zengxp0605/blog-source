@@ -11,20 +11,31 @@ keywords: zookeeper
 > 环境: 阿里云 CentOS release 6.10
 
 1. 下载 `zookeeper` 
-- 需要下载带 `-bin` 的版本,否则启动时会报错
+- 需要下载带 `-bin` 的版本,否则启动时会报错(确认该网址<https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/stable>版本号是否更新)
 - `wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/stable/apache-zookeeper-3.5.5-bin.tar.gz`
 - 解压 `tar zxvf apache-zookeeper-3.5.5-bin.tar.gz`
 
 2. 拷贝3份解压后的目录 
-- mkdir /usr/local/zookeeper
-- cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo1
-- cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo2
-- cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo3
+```sh
+mkdir /usr/local/zookeeper
+cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo1
+cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo2
+cp -rf apache-zookeeper-3.5.5-bin /usr/local/zookeeper/zoo3
+```
 
 <!-- more -->
 
 3. 修改配置
-- cp zoo1/conf/zoo_sample.cfg zoo1/conf/zoo.cfg
+```sh
+cp zoo1/conf/zoo_sample.cfg zoo1/conf/zoo.cfg;
+cp zoo2/conf/zoo_sample.cfg zoo2/conf/zoo.cfg;
+cp zoo3/conf/zoo_sample.cfg zoo3/conf/zoo.cfg;
+
+mkdir /usr/local/zookeeper/zoo1/data/;
+mkdir /usr/local/zookeeper/zoo2/data/;
+mkdir /usr/local/zookeeper/zoo3/data/;
+```
+
 - 编辑`zoo1/conf/zoo.cfg`
 ```
 dataDir=/usr/local/zookeeper/zoo1/data
@@ -51,14 +62,16 @@ server.3=127.0.0.1:2889:3889
 ```
 
 - 配置`myid`的编号, 对应`server.1`, `server.2`, `server.3` 后面的数字
-  - echo 1 >> /usr/local/zookeeper/zoo1/data/myid
-  - echo 2 >> /usr/local/zookeeper/zoo2/data/myid
-  - echo 3 >> /usr/local/zookeeper/zoo3/data/myid
+```sh
+echo 1 >> /usr/local/zookeeper/zoo1/data/myid;
+echo 2 >> /usr/local/zookeeper/zoo2/data/myid;
+echo 3 >> /usr/local/zookeeper/zoo3/data/myid;
+```
 
 - 备注:
   - 单机上的伪集群模式, server1,server2,server3 对应的端口号需要不同,clientPort也要不一致,多台机器则可以保持一致,方便维护
 
-4. 启动服务
+4. 启动服务(依赖 JAVA_HOME环境变量)
 - `./zoo1/bin/zkServer.sh start`   
 - `./zoo2/bin/zkServer.sh start`   
 - `./zoo3/bin/zkServer.sh start`   
@@ -127,3 +140,32 @@ java -jar zookeeper-dev-ZooInspector.jar //执行成功后，会弹出java ui cl
 ```
 - 点击左上角连接按钮，输入Zookeeper服务地址：ip:2181
 - 点击OK，就可以查看Zookeeper节点信息啦
+
+
+## 附录： 
+centos7.6 jdk 安装
+- 下载地址 <https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html>
+- 解压
+```sh
+mkdir -p /usr/local/java;
+ tar -zxvf jdk-8u261-linux-x64.tar.gz --directory=/usr/local/java
+```
+- 配置环境变量
+`vi /etc/profile`
+添加如下内容
+```
+#set java environment
+JAVA_HOME=/usr/local/java/jdk1.8.0_261
+JRE_HOME=$JAVA_HOME/jre
+CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+
+export CLASSPATH=.:$JAVA_HOME/lib/*.jar
+export PATH JAVA_HOME JRE_HOME CLASS_PATH
+```
+
+- 重新加载配置
+source /etc/profile
+- 检查安装是否成功
+java -version
+

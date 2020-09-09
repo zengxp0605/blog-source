@@ -107,8 +107,13 @@ upstream test2 {
 
 
 ### 扩展
-- 使用`if`条件语句
+- 传递外部参数
+```bash
+currentBranch="master"; echo 1111 | awk '{print currentBranch}' currentBranch=$currentBranch
 ```
+
+- 使用`if`条件语句
+```bash
 $ awk '{if($6 > 50) {count++;print $3;} else {x+5;print $2;}}' filename
 
 $ awk {
@@ -124,7 +129,7 @@ $ awk {
 ```
 
 - 行匹配: 匹配用~,不匹配用!~。
-```
+```bash
 // 例1 行匹配：匹配行内包含 ls 的行文本数据
 $ awk '$0~/ls/ {print}' filename   或者  awk '/ls/ {print}' filename 
 

@@ -20,6 +20,8 @@ make && make install
 # 安装在 /usr/local/nginx 
 ```
 
+设置开机自启动 [Nginx+Center OS 7.2 开机启动设置](https://www.cnblogs.com/piscesLoveCc/p/5867900.html)
+
 ### 编译安装php-fpm
 1. 安装
 ```sh

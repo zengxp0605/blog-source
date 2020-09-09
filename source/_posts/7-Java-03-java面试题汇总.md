@@ -9,6 +9,8 @@ tags: [Java]
 ## 一. Java 基础
 
 1. JDK 和 JRE 有什么区别？
+JRE(Java Runtime Enviroment) 是 Java 的运行环境。
+JDK(Java Development Kit) 又称 J2SDK(Java2 Software Development Kit)，是 Java 开发工具包。
   JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。
   简单来说：运行 java 程序，只需安装 JRE 就可以了，如果需要编写 java 程序，需要安装 JDK。
 
@@ -26,7 +28,7 @@ tags: [Java]
   Java对于eqauls方法和hashCode方法是这样规定的
     - 如果两个对象相同，那么它们的hashCode值一定要相同；
     - 如果两个对象的hashCode相同，它们并不一定相同（这里说的对象相同指的是用eqauls方法比较），如不按要求去做了，会发现相同的对象可以出现在Set集合中，同时，增加新元素的效率会大大下降。
-    - equals()相等的两个对象，hashcode()一定相等；equals()不相等的两个对象，却并不能证明他们的hashcode()不相等。
+    - **equals()相等的两个对象，hashcode()一定相等**；equals()不相等的两个对象，却并不能证明他们的hashcode()不相等。
       换句话说，equals()方法不相等的两个对象，hashcode()有可能相等。反过来，hashcode()不等，一定能推出equals()也不等；hashcode()相等，equals()可能相等，也可能不等。
 
 4. final 在 java 中有什么作用？
@@ -69,7 +71,10 @@ tags: [Java]
   - String的成员变量是private final 的，也就是初始化之后不可改变
   - 但是可以用**反射**实现，反射出String对象中的value属性， 进而改变通过获得的value引用改变数组的结构 
 
-8. String str="i"与 String str=new String(“i”)一样吗？
+8. String str="hello"与 String str=new String("hello")一样吗？
+不一样，因为内存的分配方式不一样。String str="i"的方式，java 虚拟机会将其分配到常量池中；而 String str=new String("i") 则会被分到堆内存中。JVM首先是在字符串常量池中找"Hello” 字符串，如果没有则创建字符串常量，然后放到常量池中，若已存在，则不需要创建；当遇到 new 时，还会在内存（不是字符串常量池中，而是在堆里面）上创建一个新的String对象，存储"Hello"，并将内存上的String对象引用地址返回。
+String s = new String("hello")会创建2（1）个对象，String s = "hello"创建1（0）个对象。 
+注：当字符串常量池中有对象hello时括号内成立！
 
 9. 如何将字符串反转？
 ```java
@@ -78,7 +83,19 @@ tags: [Java]
 ```
 
 10. String 类的常用方法都有那些？
-
+```
+indexOf()：返回指定字符的索引。
+charAt()：返回指定索引处的字符。
+replace()：字符串替换。
+trim()：去除字符串两端空白。
+split()：分割字符串，返回一个分割后的字符串数组。
+getBytes()：返回字符串的 byte 类型数组。
+length()：返回字符串长度。
+toLowerCase()：将字符串转成小写字母。
+toUpperCase()：将字符串转成大写字符。
+substring()：截取字符串。
+equals()：字符串比较。
+```
 
 11. 抽象类必须要有抽象方法吗？
   抽象类中可以没有抽象方法，但有抽象方法的一定是抽象类，比如常见的有HttpServlet类。

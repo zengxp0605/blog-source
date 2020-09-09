@@ -2,7 +2,7 @@
 title: 浅读设计模式之禅
 comments: true
 date: 2018-10-8 18:50
-categories: [读书笔记]
+categories: [读书笔记,设计模式]
 tags: [读书笔记]
 keywords: 设计模式之禅
 ---
@@ -136,7 +136,7 @@ public interface IPhone {
 
 
 
-# 设计模式
+## 设计模式
 
 分类  
 创建型：单例，工厂，建造者，原型  
@@ -144,13 +144,13 @@ public interface IPhone {
 结构型：代理，外观，组合，装饰器，适配器，桥接，过滤器，享元  
 
 
-## 单例模式
+### 单例模式
 详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/02-singleton>
 
 Spring中，通过@Autowired注入的依赖，默认是单例模式的
 写法和使用场景参考: [设计模式学习笔记（8）单例](https://b.letec.top/106.html)
 
-## 工厂模式
+### 工厂模式
 详见: <https://github.com/zengxp0605/java-design-patterns/tree/master/03-factory>
 
 - 简单工厂模式
@@ -165,13 +165,13 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 结合策略模式修改 AbstractFactory 类，代码更优雅
 
 
-## 模板方法模式
+### 模板方法模式
 详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/4_template_method>
 
-## 建造者模式
+### 建造者模式
 详见: <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/5_builder>
 
-## 代理模式
+### 代理模式
 详见:  
 - <https://github.com/zengxp0605/ts-design-patterns/tree/master/src/6_proxy>
 - <https://github.com/zengxp0605/java-design-patterns/tree/master/01-proxy>
@@ -191,20 +191,20 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 - 动态代理底层： **字节码重组**       
 
 
-## 原型模式
+### 原型模式
 > Prototpe Pattern  
 > Specify the kinds fo objects to create using a prototypical instance, and create new objects by copying this prototype. (用原型实例指定创建对象的种类,并且通过拷贝这些原型创建新的对象.)
 - Java中通过实现 `Cloneable` 接口来实现
 
-## 中介者模式
+### 中介者模式
 
-## 命令模式
+### 命令模式
 
-## 责任链模式
+### 责任链模式
 
-## 装饰模式
+### 装饰模式
 
-## 策略模式
+### 策略模式
 > Define a family of algorithms, encapsulate each one, and make them interchangeable. [The] Strategy [pattern] lets the algorithm vary independently from clients that use it.
 详见:  
 - <https://github.com/zengxp0605/java-design-patterns/tree/master/04-strategy-base>
@@ -226,35 +226,39 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 - 客户端必须知道所有的策略类，并自行决定使用哪一个策略类
 
 
-## 适配器模式
+### 适配器模式
 
-## 迭代器模式
+### 迭代器模式
 
-## 组合模式
+### 组合模式
 
-## 观察者模式
+### 观察者模式
 
-## 门面模式
+### 门面模式
 
-## 备忘录模式
+### 备忘录模式
 
-## 访问者模式
+### 访问者模式
 
-## 状态模式
+### 状态模式
 
-## 解释器模式
+### 解释器模式
 
-## 享元模式
+### 享元模式
 
-## 桥梁模式
+### 桥梁模式
 
 
----------
-# 23种之外的设计模式
+---------      
+## 23种之外的设计模式
 
-## 委派模式
+### 委派模式
+
+委派模式类图
 ![委派模式类图](/assets/images/tech/委派模式类图.png "委派模式类图")
+
 特征：
+- 一个对象引用了另一个对象
 - 相当于静态代理一种非常特殊的情况，全权代理
 - 项目经理分配任务，需要选择一个员工去执行，像策略模式
 - 干活是我的，功劳是你的
@@ -262,20 +266,7 @@ Spring中，通过@Autowired注入的依赖，默认是单例模式的
 
 **代理模式和策略模式的综合体？？**
 
+能不用继承就不用继承，能使用委托实现的就不使用继承。两个类有明显示的层级关系时使用继承，没有明显的层级关系，仅仅是为了在一个类中使用另一个类的方法时应该使用委托.
 
 
------------
-# 疑惑？？？
 
-使用各种设计模式，感觉很多都有关联性
-
-比如：
-策略模式中的Context 似乎也符合组合模式？
-
-委派模式也可理解为策略模式？ 委派给不同的对象执行，换个说法也就是使用不同的策略去执行；
-如项目经理委派任务给员工A或者员工B， 那么也可以理解为项目经理使用了“员工A”策略，或者使用了“员工B”策略
-
-委派模式跟代理模式（静态代理）也很相似？ 假如代理模式中的代理在 invoke 前后不做操作，那么跟委托模式描述是一样的？
-
-
-> 委托模式是一项基本技巧，许多其他的模式，如状态模式、策略模式、访问者模式本质上是在更特殊的场合采用了委托模式
