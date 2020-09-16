@@ -106,6 +106,36 @@ date1=$(date --date='1 days ago +%Y%m%d')    #前一天的日期
 date2=$(date --date='2 days ago +%Y%m%d')    #前l两天的日期
 ```
 
+### sort 排序
+- 语法：sort [-fbMnrtuk] [file or stdin]
+- 选项与参数：
+```
+-f  ：忽略大小写的差异，例如 A 与 a 视为编码相同；
+-b  ：忽略最前面的空格符部分；
+-M  ：以月份的名字来排序，例如 JAN, DEC 等等的排序方法；
+-n  ：使用『纯数字』进行排序(默认是以文字型态来排序的)；
+-r  ：反向排序；
+-u  ：就是 uniq ，相同的数据中，仅出现一行代表；
+-t  ：分隔符，默认是用 [tab] 键来分隔；
+-k  ：以那个区间 (field) 来进行排序的意思
+```
+
+### uniq
+> 重复行必须是相邻的，所以一般需要先sort 排序
+- 语法：uniq [-icu]
+- 选项与参数：
+```
+-i   ：忽略大小写字符的不同；
+-c  ：进行计数
+-u  ：只显示唯一的行
+```
+
+如统计log日期次数  
+每行log格式： `2019-01-02 09:28:31.521 DEBUG xxxxxGenerator: index`
+```
+cat logs/* | grep xxx | awk '{print $1}' | sort | uniq -c
+```
+
 
 ### 其他常用命令
 1. 查看端口占用: `netstat -tplne`
