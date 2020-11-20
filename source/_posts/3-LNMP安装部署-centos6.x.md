@@ -12,9 +12,16 @@ keywords: LNMP
 wget http://nginx.org/download/nginx-1.10.1.tar.gz
 tar -zxvf nginx-1.10.1.tar.gz
 cd nginx-1.10.1
+
 useradd -s /sbin/nologin www #添加用户,不能登录
+
 yum install pcre pcre-devel openssl openssl-devel #安装依赖
-./configure --user=www --group=www --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_gzip_static_module --with-ipv6
+./configure --user=www --group=www \
+--prefix=/usr/local/nginx \
+--with-http_stub_status_module \
+--with-http_ssl_module \
+--with-http_gzip_static_module \
+--with-ipv6
 
 make && make install
 # 安装在 /usr/local/nginx 

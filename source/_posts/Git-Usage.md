@@ -68,9 +68,18 @@ git config --global core.autocrlf false
 
 #### 各个阶段 查看代码差异：
 ```
- - git diff  // 已修改,未暂存
- - git diff --cached // 已暂存(add),未提交
- - git diff master origin/master    // 已提交(commit),未推送
+git diff  // 已修改,未暂存
+git diff --cached // 已暂存(add),未提交
+git diff master origin/master    // 已提交(commit),未推送
+git diff --name-only
+
+# 具体查看两次commit提交之后某文件的差异：
+git diff hash1 hash2 -- 文件名
+
+# 比较两个分支的所有有差异的文件列表
+git diff master test-branch1 --stat
+# 比较两个分支指定文件的差异
+git diff master test-branch1 /path/to/file
 
 ```
 

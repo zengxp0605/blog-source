@@ -63,3 +63,11 @@ real	0m0.004s
 user	0m0.000s
 sys	    0m0.003s
 ```
+
+
+## awk 分割符（field separator）
+
+-F 可以传入正则表达式， `-v OFS='---'` 指定输出的分割符
+```sh
+cat info.log | awk -F '[-:,]' -v OFS='---' '{print $1,$2}'
+```

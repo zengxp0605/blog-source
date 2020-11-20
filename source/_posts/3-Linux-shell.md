@@ -120,6 +120,12 @@ date2=$(date --date='2 days ago +%Y%m%d')    #前l两天的日期
 -k  ：以那个区间 (field) 来进行排序的意思
 ```
 
+如通过耗时日志排序
+每行log格式： `2019-01-02 09:28:31.521 INFO xxxxxHandler耗时,ms=123`
+```
+cat info.log | grep "耗时" ｜ sort -t "=" -k 3 -n
+```
+
 ### uniq
 > 重复行必须是相邻的，所以一般需要先sort 排序
 - 语法：uniq [-icu]
@@ -136,14 +142,23 @@ date2=$(date --date='2 days ago +%Y%m%d')    #前l两天的日期
 cat logs/* | grep xxx | awk '{print $1}' | sort | uniq -c
 ```
 
+### sed 某个指定时间段的内容
+```sh
+sed -n '/起始时间/,/结束时间/p' 日志文件
+
+例如，sed -n '/2014-12-17 16:17:20/,/2014-12-17 16:17:36/p'  test.log
+
+```
 
 ### 其他常用命令
 1. 查看端口占用: `netstat -tplne`
 
-2. 查看文件夹占用空间 du(disk usage)
+2. 查看端口是否占有: `lsof -i:8080`
+
+3. 查看文件夹占用空间 du(disk usage)
 	- `du -sh`  # 查看当前目录总共占的容量。而不单独列出各子项占用的容量
 	- `du -lh --max-depth=1`  # 查看当前目录下一级子文件和子目录占用的磁盘容量。
 	
-3. 查看设备的空间使用率: `df -lh`
+4. 查看设备的空间使用率: `df -lh`
 
 

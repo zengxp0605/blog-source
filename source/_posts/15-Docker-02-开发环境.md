@@ -55,3 +55,44 @@ tomcat
 Error attaching to process: sun.jvm.hotspot.debugger.DebuggerException: Can't attach to the process: ptrace(PTRACE_ATTACH, ..) failed for 123: Operation not permitted
 ```
 
+
+## 安装gitlab 
+> 需要最低4G内存。
+
+docker run --detach \
+--publish 22443:443 --publish 8180:80 --publish 2222:22 \
+--memory 4g \
+--name gitlab \
+--restart always \
+--volume /home/docker/gitlab/config:/etc/gitlab \
+--volume /home/docker/gitlab/logs:/var/log/gitlab \
+--volume /home/docker/gitlab/data:/var/opt/gitlab \
+gitlab/gitlab-ce:latest
+
+
+## 安装nginx [废弃-容器内端口转发有问题？]
+
+- 先启动一个nginx
+```sh
+  docker run -d \
+  --name nginx \
+  -p 80:80 \
+  nginx
+```
+
+- 复制配置文件到需要挂载的目录
+```
+docker cp nginx:/etc/nginx/* /opt/docker/nginx/conf
+docker cp nginx:/usr/share/nginx/html /opt/docker/nginx
+```
+
+- 删除之前的nginx容器，再启动一个使用本地配置的nginx
+```sh
+docker run -d \
+  --name nginx \
+  --volume /opt/docker/nginx/html:/usr/share/nginx/html \
+  --volume /opt/docker/nginx/conf:/etc/nginx \
+  --net=host \
+  nginx 
+
+```

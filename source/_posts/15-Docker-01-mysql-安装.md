@@ -94,11 +94,12 @@ default-character-set=utf8
 ```sh
 docker run -itd -p 3306:3306 \
 --privileged=true \
--v /opt/docker/mysql/config/my.cnf:/etc/my.cnf \
--v /opt/docker/mysql/data:/var/lib/mysql \
+-v /data/mysql/config/my.cnf:/etc/my.cnf \
+-v /data/mysql/data:/var/lib/mysql \
 -e MYSQL_USER="test" \
 -e MYSQL_PASSWORD="a123456" \
 -e MYSQL_ROOT_PASSWORD="a123456" \
+--restart=always \
 --name mysql \
 mysql \
 --character-set-server=utf8 \
@@ -108,9 +109,44 @@ mysql \
 
 参数说明
 ```
-–privileged=true：提升容器内权限
+–-privileged=true：提升容器内权限
 -v /mysql/config/my.cnf:/etc/my.cnf：映射配置文件
 -v /mysql/data:/var/lib/mysql：映射数据目录
+```
+
+
+## docker-compose
+
+docker-compose.yml
+```yaml
+version: "3"
+services: 
+
+ mysql:
+  restart: always
+  container_name: mysql
+  command: 
+    --character-set-server=utf8
+    --collation-server=utf8_general_ci
+    --default-authentication-plugin=mysql_native_password 
+  image: mysql
+  environment:
+   TZ: Asia/Shanghai
+   MYSQL_USER: test
+   MYSQL_PASSWORD: a123456
+   MYSQL_ROOT_PASSWORD: a123456
+  ports:
+   - 3306:3306
+  volumes: 
+   - /data/mysql/data:/var/lib/mysql
+   - /data/mysql/config/my.cnf:/etc/my.cnf
+  networks:
+   - default
+   - app_net
+
+networks:
+  app_net:
+    external: true
 ```
 
 
@@ -139,4 +175,10 @@ docker rmi <image id>
 - 删除全部image（镜像）加 -f 强制删除
 ```
 docker rmi $(docker images -q)
+```
+
+- docker容器启动后增加配置
+```sh
+# 设置容器自动启动
+docker update --restart=always 06b975c90f48
 ```
