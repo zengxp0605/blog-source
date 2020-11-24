@@ -27,7 +27,7 @@ p 表示替代结果逐行显示（Ctrl + L恢复屏幕）;
 
 - 常用全局替换
 ```
-:s/XXX/YYY/g    # XXX 全部替换为 YYY
+:%s/XXX/YYY/g    # XXX 全部替换为 YYY
 ```
 
 - 指定行号
@@ -59,4 +59,4 @@ $ 行首
 
 
 # 参考
-> https://www.cnblogs.com/beenoisy/p/4046074.html
+> <https://www.cnblogs.com/beenoisy/p/4046074.html>

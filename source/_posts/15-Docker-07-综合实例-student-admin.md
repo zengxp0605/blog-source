@@ -68,3 +68,61 @@ mybatis.config-location=classpath:mybatis-config.xml
 ## 测试
 
 访问 `http://localhost:8001/api/getAllStudent`
+
+
+## docker运行nginx做代理，转发请求到其他docker容器，其他容器可以不用暴露端口给主机
+
+docker-compose.yml
+```yml
+version: "3"
+services:
+   nginx:
+    image: nginx:1.18
+    container_name: nginx
+    volumes:
+     - /opt/docker/nginx/conf:/etc/nginx
+     - /opt/docker/nginx/html:/usr/share/nginx/html
+    ports:
+     - "8080:80"
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    external: true
+```
+
+/opt/docker/nginx/conf/conf.d/default.conf
+```conf
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+
+    location /py {
+        proxy_pass         http://python-web/;
+        proxy_redirect  off;
+    }
+
+    location /student {
+        proxy_pass         http://student-admin/api/;  # 这里不能省略最后一个/
+        proxy_redirect  off;
+    }
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+```
+
+**注意： `proxy_pass http://student-admin/api/;` 这里不能省略最后一个`/`**
+
+配置之后可以访问  
+- <http://jasonzeng.top:8080/py>   
+- <http://jasonzeng.top:8080/student/getAllCourse> 

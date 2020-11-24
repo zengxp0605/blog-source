@@ -70,20 +70,19 @@ docker run --detach \
 gitlab/gitlab-ce:latest
 
 
-## 安装nginx [废弃-容器内端口转发有问题？]
+## 安装nginx 
 
 - 先启动一个nginx
 ```sh
-  docker run -d \
-  --name nginx \
-  -p 80:80 \
-  nginx
+docker run -d --rm --name nginx -p 8080:80 nginx:1.18
 ```
 
 - 复制配置文件到需要挂载的目录
 ```
-docker cp nginx:/etc/nginx/* /opt/docker/nginx/conf
+docker cp nginx:/etc/nginx /opt/docker/nginx/conf
 docker cp nginx:/usr/share/nginx/html /opt/docker/nginx
+
+mv /opt/docker/nginx/conf/nginx/* /opt/docker/nginx/conf && rm -rf /opt/docker/nginx/conf/nginx
 ```
 
 - 删除之前的nginx容器，再启动一个使用本地配置的nginx
@@ -93,6 +92,6 @@ docker run -d \
   --volume /opt/docker/nginx/html:/usr/share/nginx/html \
   --volume /opt/docker/nginx/conf:/etc/nginx \
   --net=host \
-  nginx 
+  nginx:1.18 
 
 ```
